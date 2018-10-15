@@ -186,11 +186,97 @@ ul {
 
     a {
       padding: 0 10px;
-      background: #fff;
+      //background: #fff;
       margin-right: 2px;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      color: #fff;
+      transition: .5s;
+
+      .border {
+        color: black;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: transparent;
+          width: 10%;
+          height: 20%;
+          border-top: 2px solid #ffffff;
+          border-left: 2px solid #ffffff;
+          top: 2px;
+          left: 2px;
+          opacity: 0;
+          transition: .6s;
+        }
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: transparent;
+          width: 10%;
+          height: 20%;
+          border-bottom: 2px solid #ffffff;
+          border-right: 2px solid #ffffff;
+          bottom: 2px;
+          right: 2px;
+          opacity: 0;
+          transition: .6s;
+        }
+
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: transparent;
+        width: 10%;
+        height: 20%;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        top: 2px;
+        right: 2px;
+        opacity: 0;
+        transition: .6s;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: transparent;
+        width: 10%;
+        height: 20%;
+        border-bottom: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        bottom: 2px;
+        left: 2px;
+        opacity: 0;
+        transition: .6s;
+      }
+
+      &:hover:before,
+      &:hover:after,
+      &:hover > .border:before,
+      &:hover > .border:after {
+        opacity: 1;
+        width: 40%;
+        height: 40%;
+      }
+
+      //&:hover {
+      //  color: #ffffff;
+      //  background: #7a2b96;
+      //}
 
       i {
         font-size: 26px;
@@ -201,6 +287,8 @@ ul {
         font-weight: bold;
         text-transform: uppercase;
         padding-left: 10px;
+        position: relative;
+
       }
     }
   }

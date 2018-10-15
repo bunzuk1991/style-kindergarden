@@ -140,18 +140,82 @@ ul {
     padding-left: 30px; }
     .main-header .quick-links a {
       padding: 0 10px;
-      background: #fff;
       margin-right: 2px;
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      position: relative;
+      color: #fff;
+      transition: .5s; }
+      .main-header .quick-links a .border {
+        color: black;
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+        .main-header .quick-links a .border:after {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: transparent;
+          width: 10%;
+          height: 20%;
+          border-top: 2px solid #ffffff;
+          border-left: 2px solid #ffffff;
+          top: 2px;
+          left: 2px;
+          opacity: 0;
+          transition: .6s; }
+        .main-header .quick-links a .border:before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: transparent;
+          width: 10%;
+          height: 20%;
+          border-bottom: 2px solid #ffffff;
+          border-right: 2px solid #ffffff;
+          bottom: 2px;
+          right: 2px;
+          opacity: 0;
+          transition: .6s; }
+      .main-header .quick-links a:after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: transparent;
+        width: 10%;
+        height: 20%;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        top: 2px;
+        right: 2px;
+        opacity: 0;
+        transition: .6s; }
+      .main-header .quick-links a:before {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: transparent;
+        width: 10%;
+        height: 20%;
+        border-bottom: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        bottom: 2px;
+        left: 2px;
+        opacity: 0;
+        transition: .6s; }
+      .main-header .quick-links a:hover:before, .main-header .quick-links a:hover:after, .main-header .quick-links a:hover > .border:before, .main-header .quick-links a:hover > .border:after {
+        opacity: 1;
+        width: 40%;
+        height: 40%; }
       .main-header .quick-links a i {
         font-size: 26px; }
       .main-header .quick-links a span {
         font-size: 14px;
         font-weight: bold;
         text-transform: uppercase;
-        padding-left: 10px; }
+        padding-left: 10px;
+        position: relative; }
   .main-header .log-info {
     display: flex;
     justify-content: flex-end;
