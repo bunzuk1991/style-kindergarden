@@ -130,7 +130,7 @@ ul {
           color: #ffffff;
           padding: 0;
           text-align: center;
-          text-shadow: 1px 1px 2px #848484;
+          text-shadow: 0 1px 2px rgba(0,0,0, .3);
         }
       }
     }
@@ -148,8 +148,9 @@ ul {
   display: flex;
   align-items: center;
   //padding: 5px 20px;
-  line-height: 60px;
+  //line-height: 60px;
   box-shadow: 0px 2px 4px 0px #8e8e8e;
+  text-shadow: 0 1px 2px rgba(0,0,0, .3);
 
   .my-icon{
 
@@ -193,7 +194,9 @@ ul {
       align-items: center;
       position: relative;
       color: #fff;
-      transition: .5s;
+      height: 100%;
+      //transition: .5s easy-in-out .1s;
+      //transition: width, height .8s;
 
       .border {
         color: black;
@@ -207,14 +210,14 @@ ul {
           display: block;
           position: absolute;
           background-color: transparent;
-          width: 10%;
-          height: 20%;
+          width: 0;
+          height: 0;
           border-top: 2px solid #ffffff;
           border-left: 2px solid #ffffff;
           top: 2px;
           left: 2px;
           opacity: 0;
-          transition: .6s;
+          transition: width 0.3s linear, height 0.5s linear;
         }
 
         &:before {
@@ -222,14 +225,14 @@ ul {
           display: block;
           position: absolute;
           background-color: transparent;
-          width: 10%;
-          height: 20%;
+          width: 0;
+          height: 0;
           border-bottom: 2px solid #ffffff;
           border-right: 2px solid #ffffff;
           bottom: 2px;
           right: 2px;
           opacity: 0;
-          transition: .6s;
+          transition: width 0.3s linear, height 0.5s linear;
         }
 
       }
@@ -239,14 +242,14 @@ ul {
         display: block;
         position: absolute;
         background-color: transparent;
-        width: 10%;
-        height: 20%;
+        width: 0;
+        height: 0;
         border-top: 2px solid #ffffff;
         border-right: 2px solid #ffffff;
         top: 2px;
         right: 2px;
         opacity: 0;
-        transition: .6s;
+        transition: width 0.3s linear, height linear 0.5s;
       }
 
       &:before {
@@ -254,24 +257,28 @@ ul {
         display: block;
         position: absolute;
         background-color: transparent;
-        width: 10%;
-        height: 20%;
+        width: 0;
+        height: 0;
         border-bottom: 2px solid #ffffff;
         border-left: 2px solid #ffffff;
         bottom: 2px;
         left: 2px;
         opacity: 0;
-        transition: .6s;
+        transition: width 0.3s linear, height linear 0.5s;
       }
 
       &:hover:before,
       &:hover:after,
       &:hover > .border:before,
       &:hover > .border:after {
+        width: 30%;
+        height: 25%;
         opacity: 1;
-        width: 40%;
-        height: 40%;
       }
+
+      //&:hover span:after {
+      //  width: 92%;
+      //}
 
       //&:hover {
       //  color: #ffffff;
@@ -289,6 +296,18 @@ ul {
         padding-left: 10px;
         position: relative;
 
+
+        //&:after {
+        //  content: '';
+        //  display: block;
+        //  position: absolute;
+        //  left: 10px;
+        //  bottom: -5px;
+        //  width: 0;
+        //  height: 2px;
+        //  border-bottom: 2px solid #fff;
+        //  transition: width 0.3s;
+        //}
       }
     }
   }
@@ -399,7 +418,9 @@ ul {
       display: block;
       height: 100%;
       width: 120px;
+      line-height: 60px;
       text-align: center;
+      transition: all 0.65s;
 
       i {
         color: #ffffff;
@@ -416,15 +437,15 @@ ul {
     }
     a:hover {
         background: #ffffff;
-        color: #000;
+        color: #5e4477;
 
       i {
-        color: #000000;
+        color: #5e4477;
       }
       span {
-        color: #000000;
+       color: #5e4477;
       }
-      }
+    }
   }
 }
 
