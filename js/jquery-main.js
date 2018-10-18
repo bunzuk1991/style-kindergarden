@@ -20,7 +20,8 @@ $( document ).ready(function() {
         let usi = $(".user-info");
         let usi_toggle = $('#usi-toggle');
 
-        if (usi.has(e.target).length === 0 && usi_toggle.has(e.target).length === 0){
+
+        if (usi.has(e.target).length === 0 && usi_toggle.has(e.target).length === 0 && e.target.id !== 'usi-toggle'){
             usi.removeClass('usi-open');
             usi.addClass('usi-close');
         }
