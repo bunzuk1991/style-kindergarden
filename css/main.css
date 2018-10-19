@@ -160,6 +160,8 @@ ul {
       border-radius: 6px;
       padding-top: 20px;
       opacity: 0;
+      overflow: hidden;
+      visibility: hidden;
       transition: .5s;
       z-index: -9999; }
       .main-header .quick-links .menu-hidden:before {
@@ -175,6 +177,8 @@ ul {
         filter: blur(2px); }
       .main-header .quick-links .menu-hidden.menu-hidden-open {
         opacity: 1;
+        overflow: visible;
+        visibility: visible;
         z-index: 1222;
         transition: .5s; }
       .main-header .quick-links .menu-hidden li {
