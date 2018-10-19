@@ -36,7 +36,8 @@ ul {
 .content-wrapper {
   width: 100%;
   margin-left: 56px;
-  background-color: deepskyblue;
+  background: url("../img/bg_hand.png") #f7f7f7;
+  background-size: cover;
   min-height: 100vh;
   overflow-y: auto;
 
@@ -48,7 +49,7 @@ ul {
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    background-color: lightpink;
+    //background-color: lightpink;
   }
 }
 .aside-content {
@@ -87,7 +88,7 @@ ul {
         transform: translateX(0px);
       }
       &:hover > i.fa {
-        background: #c55eea;
+        background: #f177a9;
         color: #ffffff;
       }
 
@@ -117,7 +118,7 @@ ul {
         position: absolute;
         left: 56px;
         min-width: 150px;
-        background: #77578a;
+        background: #79799c;
         transform: translateX(-160px);
         transition: all 0.3s ease;
 
@@ -144,7 +145,8 @@ ul {
   left: 0;
   height: 60px;
   z-index: 1030;
-  background-image: linear-gradient(to right top, #a55eea, #ad5eea, #b55eea, #bd5eea, #c55eea);
+  //background-image: linear-gradient(to right top, #a55eea, #ad5eea, #b55eea, #bd5eea, #c55eea);
+  background: #79799c;
   display: flex;
   align-items: center;
   //padding: 5px 20px;
@@ -185,6 +187,13 @@ ul {
     height: 100%;
     padding-left: 30px;
     position: relative;
+    text-shadow: none;
+
+    .menu-hidden-wrapper {
+      position: relative;
+      height: 100%;
+    }
+
 
     .menu-hidden {
       padding-bottom: 20px;
@@ -192,8 +201,8 @@ ul {
       top: 60px;
       left: 0;
       /* height: 300px; */
-      width: 600px;
-      background: url(../img/dust_scratches.png) #f5f5f5;
+      width: 550px;
+      background: #ffffff;
       display: flex;
       flex-flow: row;
       flex-wrap: wrap;
@@ -202,9 +211,32 @@ ul {
       box-shadow: 5px 5px 8px 0px #828282;
       border-radius: 6px;
       padding-top: 20px;
+      opacity: 0;
+      transition: .5s;
+      z-index: -9999;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        bottom: 0;
+        background: #bd5eea0f;
+        z-index: -888;
+        filter: blur(2px);
+
+      }
+
+      &.menu-hidden-open {
+        opacity: 1;
+        z-index: 1222;
+        transition: .5s;
+      }
 
       li {
-        min-width: 270px;
+        width: 240px;
         height: 50px;
         margin-right: 10px;
         margin-left: 10px;
@@ -212,6 +244,7 @@ ul {
         display: flex;
         align-items: center;
         border-radius: 4px;
+        border: 1px solid #00000017;
         border-bottom: 2px solid rgba(94, 68, 119, 0.7);
         margin-bottom: 5px;
         background: #fff;
@@ -219,14 +252,14 @@ ul {
         i {
           padding-left: 10px;
           font-size: 20px;
-          color: #5e4477;
+          color: #483c4ccf;
         }
 
         p {
           padding-left: 10px;
           padding-right: 10px;
-          color: #565656;
-          font-size: 15px;
+          color: #696969;
+          font-size: 13px;
           text-transform: uppercase;
           font-weight: bold;
           text-shadow: none;
@@ -250,6 +283,23 @@ ul {
       box-sizing: border-box;
       transition: all 0.65s;
 
+      &.active-hidden-a:before {
+        content: '';
+        width: 100%;
+        height: 50px;
+        background: #d85088;
+        border-radius: 4px;
+        display: block;
+        position: absolute;
+        box-shadow: 1px 1px 0px #ffffff, 2px 2px 0px #ffffff, 3px 3px 0px #ffffff, 4px 4px 0px #ffffff;
+      }
+
+       &.active-hidden-a:hover:before {
+         background: #d85088;
+         box-shadow: 1px 1px 0px #ffffff, 2px 2px 0px #ffffff, 3px 3px 0px #ffffff, 4px 4px 0px #ffffff;
+       }
+
+
       &:before {
         content: '';
         width: 0;
@@ -272,8 +322,20 @@ ul {
 
       &:hover > i,
       &:hover > span {
-        color: #5e4477;
+        color: #d85088;
+        transition: 0.2s 0.08s;
+      }
+
+      &.active-hidden-a > i,
+      &.active-hidden-a > span {
+        color: #ffffff;
         transition: 0.5s 0.08s;
+      }
+
+      &.active-hidden-a:hover > i,
+      &.active-hidden-a:hover > span {
+        color: #ffffff;
+        transition: 0.2s 0.08s;
       }
 
       .border {
@@ -318,7 +380,7 @@ ul {
 
         .user-info-content {
           width: 100%;
-          background: #5e4477;
+          background: #c5ceb1;
           height: 170px;
           display: flex;
           flex-direction: column;
@@ -369,7 +431,7 @@ ul {
 
         .user-info-footer {
           width: 100%;
-          background-color: #f3f3f3;
+          background-color: #c5ceb159;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -378,7 +440,7 @@ ul {
           a {
             width: 86px;
             height: 30px;
-            background-color: #6648a2;
+            background-color: #79799c;
             text-align: center;
             text-transform: uppercase;
             font-weight: bold;
@@ -399,7 +461,7 @@ ul {
       transform: translateX(0px);
     }
 
-    a {
+    #usi-toggle {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -410,6 +472,7 @@ ul {
       z-index: 1;
       border-radius: 4px;
       transition: all 0.5s;
+      text-shadow: none;
 
       &:before {
         content: '';
@@ -418,7 +481,6 @@ ul {
         display: block;
         position: absolute;
         border-radius: 4px;
-        border-bottom: 2px solid #5e4477;
         z-index: -1;
       }
 
@@ -434,7 +496,7 @@ ul {
 
       &:hover > i,
       &:hover > span {
-        color: #5e4477;
+        color: #d85088;
         transition: 0.5s 0.08s;
       }
 
@@ -474,4 +536,213 @@ ul {
   width: 58px;
   z-index: 810;
   background-color: #ffffff;
+}
+
+.content {
+  .lc-wrapper, .debtors-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .list-child-out, .debt-list {
+      width: 75%;
+      border: 1px solid #e2e2e299;
+      padding: 30px 20px;
+      box-shadow: 1px 2px 5px 0px rgba(94, 68, 119, 0.15);
+      background: #fff;
+      margin-right: 15px;
+
+    ul {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+  }
+  .list-child-counter, .debt-amount {
+      width: 20%;
+      border: 1px solid #e2e2e299;
+      padding: 30px 20px;
+      box-shadow: 1px 2px 5px 0px rgba(94, 68, 119, 0.15);
+      background: #fff;
+  }
+
+  .col-title {
+    font-size: 16px;
+    position: relative;
+    background: #ff8483;
+    color: #fff;
+    padding-left: 10px;
+    text-transform: uppercase;
+    box-shadow: 1px 1px 0px #efefef, 2px 2px 0px #efefef, 3px 3px 0px #efefef, 4px 4px 0px #efefef;
+
+      span {
+        font-weight: bold;
+        font-style: normal;
+        text-transform: uppercase;
+        color: #ffffff;
+      }
+    }
+
+
+  .lc-wrapper {
+
+    h3 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 20px;
+      color: #585858;
+    }
+
+    .list-child-out {
+      ul {
+        li {
+          display: flex;
+          border: 1px solid #e2e2e299;
+          margin-bottom: 7px;
+          color: #4a4a4a;
+          width: 400px;
+
+          div {
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 17px;
+          }
+
+          .lc-name {
+            font-weight: bold;
+            color: #7b7b7b;
+            width: 50%;
+          }
+          .lc-date-out {
+            color: #614d82;
+          }
+          .lc-days-in {
+            color: #0e864f;
+          }
+          .lc-days-out {
+            color: #b3733b;
+          }
+        }
+      }
+
+
+
+    }
+    .list-child-counter {
+      .lcc-count-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        p {
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          color: #ffffff;
+        }
+
+        .lcc-child-in {
+          background-color: #74b9ff;
+          margin-bottom: 5px;
+        }
+        .lcc-child-out {
+          background-color: #ff7675;
+          margin-bottom: 5px;
+        }
+        .lcc-percent-in {
+          background-color: #a29bfe;
+        }
+      }
+    }
+  }
+
+  .debtors-wrapper {
+    margin-top: 15px;
+
+    h3 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 20px;
+      color: #585858;
+    }
+
+    .debt-list {
+      ul {
+
+        li {
+          display: flex;
+          border: 1px solid #e2e2e299;
+          margin-bottom: 7px;
+          color: #4a4a4a;
+          width: 49%;
+
+          div {
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 16px;
+          }
+
+          .debt-name {
+            font-weight: bold;
+            color: #7b7b7b;
+            width: 43%;
+            border-right: 1px solid #e2e2e299;
+          }
+          .last-pay-date {
+            color: #614d82;
+          }
+          .last-pay-amount {
+            color: #0e864f;
+            border-right: 1px solid #e2e2e299;
+          }
+          .debt {
+            margin: auto;
+            color: #b3733b;
+
+            span {
+              font-weight: bold;
+            }
+          }
+
+        }
+      }
+    }
+    .debt-amount {
+      .debt-amount-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        p {
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          color: #ffffff;
+        }
+
+        .db-pay {
+          background-color: #10ac84;
+          margin-bottom: 5px;
+        }
+        .db-all-debt {
+          background-color: #ffaa57f0;
+          margin-bottom: 5px;
+        }
+        .db-percent {
+          background-color: #f368e0;
+        }
+      }
+    }
+  }
 }
