@@ -469,7 +469,8 @@ ul {
   .content .lc-wrapper .list-child-counter .lcc-count-wrapper .lcc-percent-in {
     background-color: #a29bfe; }
 .content .debtors-wrapper {
-  margin-top: 15px; }
+  margin-top: 15px;
+  margin-bottom: 15px; }
   .content .debtors-wrapper h3 {
     text-align: center;
     text-transform: uppercase;
