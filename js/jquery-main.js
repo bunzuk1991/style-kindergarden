@@ -1,5 +1,20 @@
 $( document ).ready(function() {
 
+    function daysBar() {
+        let items = $(".percent-data");
+
+        items.each(function (i, elem) {
+
+            current_item = $(this);
+            let percent = current_item.attr('data-percent');
+            console.log(percent);
+            current_item.css('width', percent + '%')
+
+        });
+    }
+
+    daysBar();
+
     $('#usi-toggle').on('click', function (e) {
         e.preventDefault();
         let current = $('.user-info');
