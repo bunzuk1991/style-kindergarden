@@ -180,6 +180,39 @@
             text-align: center;
             justify-content: center;
           }
+          .day-command {
+            height: 100%;
+
+            .current-day, .else-day {
+              min-width: 166px;
+              height: 100%;
+              display: block;
+              background: #fff;
+              color: #7070ed;
+              padding: 6px 4px;
+              text-align: center;
+              border-radius: 6px;
+              border: 1px solid #bdbdbd;
+              text-transform: uppercase;
+              font-size: 12px;
+              font-weight: 600;
+
+
+              &:hover {
+                transition: .5s;
+                background: #d85088;
+                color: #ffffff;
+              }
+            }
+            .else-day {
+              background: #4f4f4f;
+              color: #ffffff;
+
+              &:hover {
+                border: 1px solid #ffffff;
+              }
+            }
+          }
         }
       }
     }
