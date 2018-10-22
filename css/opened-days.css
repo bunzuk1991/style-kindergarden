@@ -125,7 +125,7 @@
       .content .opened-days-history .odh-days .odh-item .day-command {
         height: 100%; }
         .content .opened-days-history .odh-days .odh-item .day-command .current-day, .content .opened-days-history .odh-days .odh-item .day-command .else-day {
-          min-width: 166px;
+          min-width: 140px;
           height: 100%;
           display: block;
           background: #fff;
@@ -135,7 +135,7 @@
           border-radius: 6px;
           border: 1px solid #bdbdbd;
           text-transform: uppercase;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 600; }
           .content .opened-days-history .odh-days .odh-item .day-command .current-day:hover, .content .opened-days-history .odh-days .odh-item .day-command .else-day:hover {
             transition: .5s;
@@ -146,5 +146,3 @@
           color: #ffffff; }
           .content .opened-days-history .odh-days .odh-item .day-command .else-day:hover {
             border: 1px solid #ffffff; }
-
-/*# sourceMappingURL=opened-days.css.map */
