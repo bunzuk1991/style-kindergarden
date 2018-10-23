@@ -8,7 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/childrens.css">
-    <link rel="stylesheet" href="css/opened-day-detail.css">
+    <link rel="stylesheet" href="css/child-detail.css">
     <title>Main</title>
 </head>
 <body>
@@ -229,13 +229,33 @@
                             <h3>Особиста інформація по Буняк Володимир Сергійович</h3>
                             <div class="detail-content-wrapper">
                                 <div class="line-img-personal-info">
-                                    <div class="img-conteiner">
-                                        <img src="img/boy.jpg" alt="">
+                                    <div class="img-container">
+                                        <div class="img-wrapper">
+                                            <img src="img/boy.jpg" alt="">
+                                            <div class="add-img">
+                                                <input type="file" id="upload-child-img">
+                                                <label for="upload-child-img">Вибрати фото</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="personal-info-container">
                                         <div class="pic-name">
-                                            <p>Буняк Володимир Сергійович</p>
-                                            <p>01.08.2014</p>
+                                            <div class="input-group">
+                                                <span class="label-wrp label-req" data-img="\f000">Прізвище, ім’я та по-батькові</span>
+                                                <input class="input-wrp" name="name" type="text" placeholder="Прізвище, ім’я та по-батькові" value="Буняк Володимир Сергійович">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="label-wrp label-req">Дата народження</span>
+                                                <input class="input-wrp" name="date-of-birth" type="date" value="07/08/2013">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="label-wrp label-req">Ріст (см.)</span>
+                                                <input class="input-wrp" name="height" type="number" min="1" max="300" value="121">
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="label-wrp label-req">Вага (кг.)</span>
+                                                <input class="input-wrp" name="weight" type="number" min="1" max="300" value="21">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
