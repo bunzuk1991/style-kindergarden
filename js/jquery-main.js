@@ -1,19 +1,138 @@
+function formatDate(date) {
+
+  var dd = date.getDate();
+  if (dd < 10) dd = '0' + dd;
+
+  var mm = date.getMonth() + 1;
+  if (mm < 10) mm = '0' + mm;
+
+  var yy = date.getFullYear();
+  if (yy < 10) yy = '0' + yy;
+
+  return yy + '-' + mm + '-' + dd;
+}
+
+
+function daysBar() {
+    let items = $(".percent-data");
+
+    items.each(function (i, elem) {
+
+        current_item = $(this);
+        let percent = current_item.attr('data-percent');
+        console.log(percent);
+        current_item.css('width', percent + '%')
+
+    });
+}
+
+
+function clearForm() {
+    let form_ = $('#form-parent');
+    let form_input = form_.find('input[type="text"], input[type="date"], input[type="phone"]');
+    let form_textarea = form_.find('textarea');
+
+    form_textarea.val('');
+
+    form_input.each(function (i, elem) {
+        $(this).attr('value', '');
+    })
+};
+
+
+function convertDate(textDate) {
+    let text = "" + textDate;
+    let date = new Date(text.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1'));
+
+    return date;
+};
+
 $( document ).ready(function() {
 
-    function daysBar() {
-        let items = $(".percent-data");
-
-        items.each(function (i, elem) {
-
-            current_item = $(this);
-            let percent = current_item.attr('data-percent');
-            console.log(percent);
-            current_item.css('width', percent + '%')
-
-        });
-    }
-
     daysBar();
+
+
+    $('.select').on('click', function (e) {
+        e.preventDefault();
+
+        let lists = $(this).find('.select-item-wrapper');
+        lists.toggleClass('show-select');
+
+    });
+
+    $('#add-parent').on('click', function (e) {
+        e.preventDefault();
+
+        let last_element = $('.lst-parent:last-child');
+        let last_id = 0;
+
+        if (last_element.length === 0) {
+           last_id = 1;
+        } else {
+            last_id = +last_element.attr('id').replace(/lst-/g, "");
+            last_id += 1;
+            // last_id = last_element.length + 1;
+        }
+
+
+        let modal = $('.modal');
+        let form_id = modal.find('input[name="form-id"]');
+
+        form_id.attr('value', 'lst-' + last_id);
+        modal.addClass('opened');
+    });
+
+    $('.select-item').on('click', function (e) {
+
+        let current = $(this).text();
+        let radio_selected = $('.select-value');
+
+        radio_selected.text(current);
+        if (!radio_selected.hasClass('value-inserted')) {
+            radio_selected.addClass('value-inserted');
+        }
+    });
+
+    $('.change-parent-info').on('click', function (e) {
+        e.preventDefault();
+        let current_element = $(this).closest('.lst-parent');
+        let row_set = current_element.find('div p');
+
+        // console.log(row_set)
+        let name = row_set[0].innerText,
+            date_birth = row_set[1].innerText,
+            type = row_set[2].innerText,
+            phone = row_set[3].innerText,
+            work = row_set[4].innerText,
+            place = row_set[5].innerText,
+            id_parent = current_element.attr('id');
+
+
+        clearForm();
+
+        let form = $('#form-parent');
+        let date_from_p = convertDate(date_birth);
+
+        form.find('input[name="name"]').attr('value', name);
+        form.find('input[name="date-of-birth"]').attr('value', formatDate(date_from_p));
+        form.find('input[name="phone"]').attr('value', phone);
+        form.find('.select-value').text(type);
+        form.find('textarea[name="work"]').val(work);
+        form.find('input[name="position"]').attr('value', place);
+        form.find('input[name="form-id"]').attr('value', id_parent);
+
+
+
+         $('.modal').addClass('opened');
+
+
+    });
+
+
+    $('.close-modal .fa').on('click', function (e) {
+        $('.modal').removeClass('opened');
+        clearForm();
+    });
 
     $('#usi-toggle').on('click', function (e) {
         e.preventDefault();
@@ -71,7 +190,7 @@ $( document ).ready(function() {
         let act_a = $('.toggle-hidden-menu');
 
         let tar_a = e.target.classList.contains("toggle-hidden-menu");
-        let tar_a_parrent = e.target.parentElement.classList.contains("toggle-hidden-menu")
+        let tar_a_parrent = e.target.parentElement.classList.contains("toggle-hidden-menu");
 
         let missed = tar_a_parrent || tar_a;
 
@@ -82,5 +201,12 @@ $( document ).ready(function() {
         }
         // **** клік поза межами #menu-hidden
 
+        let select = $('.select-item-wrapper');
+
+        if (select.has(e.target).length === 0 && !e.target.classList.contains('select-item-wrapper') && !e.target.classList.contains('select-value')){
+            select.removeClass('show-select');
+        }
+        console.log(select.has(e.target).length);
+        console.log(e.target.classList.contains('select-item-wrapper'));
     });
 });

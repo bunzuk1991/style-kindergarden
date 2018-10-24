@@ -13,7 +13,65 @@
 </head>
 <body>
 
+    <div class="modal" data-target="change-parent">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <div class="inp-group">
 
+                    <form id="form-parent">
+                        <div class="form-group">
+                            <div class="close-modal">
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>ПІБ</label>
+                            <input name="name" type="text" value="" placeholder="Прізвище, ім’я, по-батькові">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата народження</label>
+                            <input name="date-of-birth" type="date" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input name="phone" type="phone" value="" placeholder="Телефон">
+                        </div>
+                        <div class="form-group hidden">
+                            <input name="form-id" type="text" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Відношення</label>
+                            <ul class="select" data-value="">
+                                <div class="select-value">Оберіть відношення</div>
+                                <div class="select-item-wrapper">
+                                    <li class="select-item" value="father">Батько</li>
+                                    <li class="select-item" value="mother">Мати</li>
+                                    <li class="select-item" value="grandmother">Бабуся</li>
+                                    <li class="select-item" value="grandfather">Дідусь</li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label>Місце роботи</label>
+                            <textarea name="work" placeholder="введіть місце роботи">nfkdsnfsdfsdnfdsfkdsf</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Посада</label>
+                            <input name="position" type="text" value="" placeholder="Назва посади">
+                        </div>
+                        <div class="form-group">
+                            <label>Адреса</label>
+                            <textarea name="address" placeholder="введіть свою адресу"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Записати">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="wrapper">
         <header class="main-header">
             <div class="my-icon">
@@ -177,6 +235,7 @@
             </div>
             <div class="content-wrapper">
                 <div class="content">
+
                     <div class="children-wrapper">
                         <div class="command-line">
                             <ul>
@@ -252,31 +311,23 @@
                                                 <span class="label-wrp label-req">Вага (кг.)</span>
                                                 <input class="input-wrp" name="weight" type="number" min="1" max="300" value="21">
                                             </div>
+                                            <div class="pic-commands">
+                                                <div class="button-wrapper">
+                                                    <label for="add-photo">Додати фотографію</label>
+                                                    <input type="file" id="add-photo">
+                                                </div>
+                                                <div class="button-wrapper">
+                                                    <a href="#" id="add-parent">Додати батьків</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="line-parents">
                                     <ul class="list-parents">
-                                       <li class="lst-parent">
-                                           <div class="lst-name">
-                                               <p>Буняк Володимир Сергійович</p>
-                                           </div>
-                                           <div class="lst-date-birth">
-                                               <p>07.08.2018</p>
-                                           </div>
-                                           <div class="lst-type">
-                                               <p>Батько</p>
-                                           </div>
-                                           <div class="lst-work">
-                                               <p>Україна, Тернопільська область, м.Тернопіль Приватне підприємство "Укрспецінформ"</p>
-                                           </div>
-                                           <div class="lst-posada">
-                                               <p>Програміст</p>
-                                           </div>
-                                       </li>
                                         <li class="lst-parent">
-                                           <div class="lst-name">
-                                               <p>Буняк Володимир Сергійович</p>
+                                           <div class="lst-name" id="lst-1">
+                                               <p>Буняк Володимир Сергійович1</p>
                                            </div>
                                            <div class="lst-date-birth">
                                                <p>07.08.2018</p>
@@ -284,12 +335,64 @@
                                            <div class="lst-type">
                                                <p>Батько</p>
                                            </div>
+                                            <div class="lst-phone">
+                                                <p>0969945947</p>
+                                            </div>
                                            <div class="lst-work">
                                                <p>Україна, Тернопільська область, м.Тернопіль Приватне підприємство "Укрспецінформ"</p>
                                            </div>
                                            <div class="lst-posada">
                                                <p>Програміст</p>
                                            </div>
+                                            <div class="lst-change">
+                                                <p><a href="#" class="change-parent-info">Змінити</a></p>
+                                            </div>
+                                       </li>
+                                        <li class="lst-parent" id="lst-2">
+                                           <div class="lst-name">
+                                               <p>Буняк Володимир Сергійович2</p>
+                                           </div>
+                                           <div class="lst-date-birth">
+                                               <p>07.08.2018</p>
+                                           </div>
+                                           <div class="lst-type">
+                                               <p>Батько</p>
+                                           </div>
+                                            <div class="lst-phone">
+                                                <p>0969945947</p>
+                                            </div>
+                                           <div class="lst-work">
+                                               <p>Україна, Тернопільська область, м.Тернопіль Приватне підприємство "Укрспецінформ"</p>
+                                           </div>
+                                           <div class="lst-posada">
+                                               <p>Програміст</p>
+                                           </div>
+                                            <div class="lst-change">
+                                                <p><a href="#" class="change-parent-info">Змінити</a></p>
+                                            </div>
+                                       </li>
+                                        <li class="lst-parent" id="lst-3">
+                                           <div class="lst-name">
+                                               <p>Буняк Володимир Сергійович3</p>
+                                           </div>
+                                           <div class="lst-date-birth">
+                                               <p>07.08.2018</p>
+                                           </div>
+                                           <div class="lst-type">
+                                               <p>Батько</p>
+                                           </div>
+                                            <div class="lst-phone">
+                                                <p>0969945947</p>
+                                            </div>
+                                           <div class="lst-work">
+                                               <p>Україна, Тернопільська область, м.Тернопіль Приватне підприємство "Укрспецінформ"</p>
+                                           </div>
+                                           <div class="lst-posada">
+                                               <p>Програміст</p>
+                                           </div>
+                                            <div class="lst-change">
+                                                <p><a href="#" class="change-parent-info">Змінити</a></p>
+                                            </div>
                                        </li>
                                     </ul>
                                 </div>
