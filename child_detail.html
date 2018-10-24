@@ -39,6 +39,9 @@
                         <div class="form-group hidden">
                             <input name="form-id" type="text" value="">
                         </div>
+                        <div class="form-group hidden">
+                            <span id="operation-type" data-type="0"></span>
+                        </div>
                         <div class="form-group">
                             <label>Відношення</label>
                             <ul class="select" data-value="">
@@ -64,7 +67,7 @@
                             <textarea name="address" placeholder="введіть свою адресу"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Записати">
+                            <input type="submit" value="Записати" id="modal-parent-save">
                         </div>
                     </form>
 
@@ -325,8 +328,8 @@
                                 </div>
                                 <div class="line-parents">
                                     <ul class="list-parents">
-                                        <li class="lst-parent">
-                                           <div class="lst-name" id="lst-1">
+                                        <li class="lst-parent" id="lst-1">
+                                           <div class="lst-name">
                                                <p>Буняк Володимир Сергійович1</p>
                                            </div>
                                            <div class="lst-date-birth">

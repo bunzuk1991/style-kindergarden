@@ -20,7 +20,6 @@ function daysBar() {
 
         current_item = $(this);
         let percent = current_item.attr('data-percent');
-        console.log(percent);
         current_item.css('width', percent + '%')
 
     });
@@ -47,6 +46,41 @@ function convertDate(textDate) {
     return date;
 };
 
+function returnParentHtml(id, name, date_of_birth, type, phone, work, posada, newitem){
+
+    let textHtml = '';
+
+    let textHtml_prev = '<div class="lst-name">'
+                +   '<p>' + name + '</p>'
+                + '</div>'
+                + '<div class="lst-date-birth">'
+                +   '<p>' + date_of_birth + '</p>'
+                + '</div>'
+                + '<div class="lst-type">'
+                +   '<p>' + type + '</p>'
+                + '</div>'
+                + '<div class="lst-phone">'
+                +   '<p>' + phone + '</p>'
+                + '</div>'
+                + '<div class="lst-work">'
+                +   '<p>' + work + '</p>'
+                + '</div>'
+                + '<div class="lst-posada">'
+                +   '<p>' + posada + '</p>'
+                + '</div>'
+                + '<div class="lst-change">'
+                +   '<p><a href="#" class="change-parent-info">Змінити</a></p>'
+                + '</div>';
+
+    if (newitem) {
+        textHtml =  '<li class="lst-parent" id="' + id + '" >' + textHtml_prev + '</li>';
+    } else {
+        textHtml = textHtml_prev;
+    }
+
+    return textHtml;
+}
+
 $( document ).ready(function() {
 
     daysBar();
@@ -62,6 +96,7 @@ $( document ).ready(function() {
 
     $('#add-parent').on('click', function (e) {
         e.preventDefault();
+        clearForm();
 
         let last_element = $('.lst-parent:last-child');
         let last_id = 0;
@@ -74,12 +109,45 @@ $( document ).ready(function() {
             // last_id = last_element.length + 1;
         }
 
-
         let modal = $('.modal');
         let form_id = modal.find('input[name="form-id"]');
+        let oper_type = modal.find('#operation-type');
 
         form_id.attr('value', 'lst-' + last_id);
+        oper_type.attr('data-type', '1');
         modal.addClass('opened');
+    });
+
+    $('#modal-parent-save').on('click', function (e) {
+        e.preventDefault();
+
+        let form = $('#form-parent');
+
+        let name = form.find('input[name="name"]').val();
+        let date_of_birth = form.find('input[name="date-of-birth"]').val();
+        let phone = form.find('input[name="phone"]').val();
+        let type = form.find('.select-value')[0].innerText;
+        let work = form.find('textarea[name="work"]').val();
+        let place = form.find('input[name="position"]').val();
+        let id = form.find('input[name="form-id"]').val();
+        let operation_type = form.find('#operation-type').attr('data-type');
+        let oper_numb = 0;
+        let modal = $('.modal');
+
+        if (operation_type === '1') {
+            let new_item = returnParentHtml(id, name, date_of_birth, type, phone, work, place, true);
+            $('.list-parents').append(new_item);
+        } else {
+            let new_item = returnParentHtml(id, name, date_of_birth, type, phone, work, place, false);
+            let elem = $("#" + id);
+            elem.children().remove();
+            elem.append(new_item);
+        }
+
+        modal.removeClass('opened');
+
+        clearForm();
+
     });
 
     $('.select-item').on('click', function (e) {
@@ -93,12 +161,11 @@ $( document ).ready(function() {
         }
     });
 
-    $('.change-parent-info').on('click', function (e) {
+    $('.list-parents').on('click', '.change-parent-info',  function (e) {
         e.preventDefault();
         let current_element = $(this).closest('.lst-parent');
         let row_set = current_element.find('div p');
 
-        // console.log(row_set)
         let name = row_set[0].innerText,
             date_birth = row_set[1].innerText,
             type = row_set[2].innerText,
@@ -120,7 +187,7 @@ $( document ).ready(function() {
         form.find('textarea[name="work"]').val(work);
         form.find('input[name="position"]').attr('value', place);
         form.find('input[name="form-id"]').attr('value', id_parent);
-
+        form.find('#operation-type').attr('data-type', '2');
 
 
          $('.modal').addClass('opened');
@@ -173,7 +240,7 @@ $( document ).ready(function() {
     });
 
 
-    $(document).mouseup(function (e) {
+    $(window).mouseup(function (e) {
     // **** клік поза межами #usi-toggle та .user-info
         let usi = $(".user-info");
         let usi_toggle = $('#usi-toggle');
@@ -188,9 +255,18 @@ $( document ).ready(function() {
         // **** клік поза межами #menu-hidden
         let menu_hidden = $(".menu-hidden");
         let act_a = $('.toggle-hidden-menu');
+        let tar_a_parrent;
 
         let tar_a = e.target.classList.contains("toggle-hidden-menu");
-        let tar_a_parrent = e.target.parentElement.classList.contains("toggle-hidden-menu");
+
+
+        if (e.target.tagName === 'HTML') {
+           tar_a_parrent = false;
+        } else {
+           tar_a_parrent = e.target.parentElement.classList.contains("toggle-hidden-menu");
+        }
+
+
 
         let missed = tar_a_parrent || tar_a;
 
@@ -206,7 +282,5 @@ $( document ).ready(function() {
         if (select.has(e.target).length === 0 && !e.target.classList.contains('select-item-wrapper') && !e.target.classList.contains('select-value')){
             select.removeClass('show-select');
         }
-        console.log(select.has(e.target).length);
-        console.log(e.target.classList.contains('select-item-wrapper'));
     });
 });
