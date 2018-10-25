@@ -13,6 +13,24 @@ function formatDate(date) {
 }
 
 
+function previewFile() {
+
+  let preview = document.querySelector('.img-container .img-wrapper img');
+  let file    = document.querySelector('#add-photo').files[0];
+  let reader  = new FileReader();
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+
+
 function daysBar() {
     let items = $(".percent-data");
 
@@ -70,10 +88,11 @@ function returnParentHtml(id, name, date_of_birth, type, phone, work, posada, ne
                 + '</div>'
                 + '<div class="lst-change">'
                 +   '<p><a href="#" class="change-parent-info">Змінити</a></p>'
+                +   '<p><a href="#" class="delete-parent-info">Вилучити</a></p>'
                 + '</div>';
 
     if (newitem) {
-        textHtml =  '<li class="lst-parent" id="' + id + '" >' + textHtml_prev + '</li>';
+        textHtml =  '<li class="lst-parent" id="' + id + '" data-operation="added"  data-delete="">' + textHtml_prev + '</li>';
     } else {
         textHtml = textHtml_prev;
     }
@@ -140,6 +159,9 @@ $( document ).ready(function() {
         } else {
             let new_item = returnParentHtml(id, name, date_of_birth, type, phone, work, place, false);
             let elem = $("#" + id);
+            if (elem.attr('data-operation') == '') {
+                elem.attr('data-operation', 'change')
+            }
             elem.children().remove();
             elem.append(new_item);
         }
@@ -195,6 +217,19 @@ $( document ).ready(function() {
 
     });
 
+    $('.list-parents').on('click', '.delete-parent-info',  function (e) {
+        e.preventDefault();
+        let current_element = $(this).closest('.lst-parent');
+
+
+        current_element.addClass('parent-deleted');
+        current_element.attr('data-delete', 'true');
+
+    });
+
+    $('#add-photo').on('change', function (e) {
+        previewFile();
+    });
 
     $('.close-modal .fa').on('click', function (e) {
         $('.modal').removeClass('opened');
