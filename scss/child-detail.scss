@@ -445,6 +445,23 @@
           min-height: 110px;
           box-shadow: 2px 2px 2px #909090;
 
+          .tabs-titles {
+
+
+            ul {
+              display: flex;
+
+              li {
+                padding: 10px;
+                margin-right: 10px;
+                background: #262626;
+                width: 200px;
+                display: flex;
+                color: #ffffff;
+              }
+            }
+          }
+
           .list-parents {
             display: flex;
             flex-flow: row;
