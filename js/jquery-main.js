@@ -51,8 +51,10 @@ function clearForm() {
 
     form_textarea.val('');
 
+
     form_input.each(function (i, elem) {
         $(this).attr('value', '');
+        $(this).val('');
     })
 };
 
@@ -100,9 +102,34 @@ function returnParentHtml(id, name, date_of_birth, type, phone, work, posada, ne
     return textHtml;
 }
 
+function tabsToggle() {
+    $('.tabs-content .tab:not(":first-of-type")').hide();
+
+    $('.tabs-titles ul li').each(function (i) {
+        $(this).attr('data-tab', 'tab' + i)
+    });
+
+    $('.tabs-content .tab').each(function (i) {
+        $(this).attr('data-tab', 'tab' + i)
+    });
+    
+    $('.tabs-titles ul li').on('click', function (e) {
+        let DataThis = $(this);
+        let Wrapper = $(this).closest('.line-parents');
+
+        Wrapper.find('.tabs-titles ul li').removeClass('active-tab');
+        $(this).addClass('active-tab');
+
+        Wrapper.find('.tabs-content .tab').hide();
+        Wrapper.find('.tabs-content .tab[data-tab=' + DataThis.data('tab') + ']').show();
+
+    })
+}
+
 $( document ).ready(function() {
 
     daysBar();
+    tabsToggle();
 
 
     $('.select').on('click', function (e) {
@@ -133,6 +160,7 @@ $( document ).ready(function() {
         let oper_type = modal.find('#operation-type');
 
         form_id.attr('value', 'lst-' + last_id);
+        form_id.val('lst-' + last_id);
         oper_type.attr('data-type', '1');
         modal.addClass('opened');
     });
@@ -203,12 +231,17 @@ $( document ).ready(function() {
         let date_from_p = convertDate(date_birth);
 
         form.find('input[name="name"]').attr('value', name);
+        form.find('input[name="name"]').val(name);
         form.find('input[name="date-of-birth"]').attr('value', formatDate(date_from_p));
+        form.find('input[name="date-of-birth"]').val(formatDate(date_from_p));
         form.find('input[name="phone"]').attr('value', phone);
+        form.find('input[name="phone"]').val(phone);
         form.find('.select-value').text(type);
         form.find('textarea[name="work"]').val(work);
         form.find('input[name="position"]').attr('value', place);
+        form.find('input[name="position"]').val(place);
         form.find('input[name="form-id"]').attr('value', id_parent);
+        form.find('input[name="form-id"]').val(id_parent);
         form.find('#operation-type').attr('data-type', '2');
 
 
