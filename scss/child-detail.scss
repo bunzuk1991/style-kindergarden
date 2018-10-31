@@ -86,6 +86,32 @@
           border-radius: 4px;
         }
 
+        .birth-wrapper {
+          width: 100%;
+          box-sizing: border-box;
+          display: flex;
+
+          select {
+            display: block;
+            border: 1px solid #79799c;
+            border-radius: 4px;
+            outline: none;
+            padding: 5px 10px;
+          }
+
+          select:nth-child(1) {
+            width: 20%;
+            margin-right: 5px;
+          }
+          select:nth-child(2) {
+            width: 50%;
+            margin-right: 5px;
+          }
+          select:nth-child(3) {
+            width: 30%;
+          }
+        }
+
         input[type="submit"] {
           border: none;
           background: #79799c;
@@ -255,6 +281,30 @@
         box-sizing: border-box;
         display: block;
         width: calc(100% - 140px);
+      }
+
+      .date-select-wrapper {
+        width: calc(100% - 140px);
+        font-size: 14px;
+        margin-right: 10px;
+        height: 26px;
+        box-sizing: border-box;
+        display: flex;
+
+        select {
+         outline: none;
+        }
+
+        select:nth-child(1) {
+          width: 50%;
+        }
+        select:nth-child(2) {
+          width: 20%;
+        }
+        select:nth-child(3) {
+          width: 30%;
+          margin-right: 0;
+        }
       }
 
       .label-wrp {
@@ -516,7 +566,9 @@
 
               .field-container {
 
-
+              &.hidden {
+                display: none;
+              }
 
                 div  {
                   //padding: 2px 4px;
@@ -549,11 +601,11 @@
                 width: 40%;
                 border-right: 1px solid #ececec;
               }
-              .field-container:nth-child(4){
+              .field-container:nth-child(5){
                 width: 15%;
               }
 
-              input, textarea {
+              input, select, textarea {
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
@@ -565,14 +617,17 @@
                 display: block;
                 border: none;
                 text-align: center;
+                text-align-last: center;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
               }
 
-              input {
+              input, select {
                 padding: 9px 5px;
               }
 
-              textarea {
-              }
+
 
 
 
@@ -582,14 +637,14 @@
               }
               .lst-date-birth {
                  color: #5a5a5a;
-                width: 65%;
+                width: 55%;
               }
               .lst-type {
                  color: #5a5a5a;
               }
               .lst-phone {
                 color: #5a5a5a;
-                width: 35%;
+                width: 45%;
               }
               .lst-work {
                  color: #5a5a5a;
